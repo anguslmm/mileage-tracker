@@ -1,0 +1,11 @@
+<p>Initial mileage: {{ car.initial_mileage }}</p>
+{% if checkpoints %}
+    <ul>
+        {% for checkpoint in checkpoints %}
+            <li>{{ checkpoint }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total mileage: {{ total_mileage }}</p>
+{% else %}
+    <p>No checkpoints for this car.</p>
+{% endif %}

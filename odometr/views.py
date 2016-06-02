@@ -16,3 +16,10 @@ def car(request, car_id):
     target_mileage = int(car.initial_mileage + car.yearly_mileage/365.0 * (timezone.now() - car.start_date).days)
     context = {'car' : car, 'total_mileage' : total_mileage, 'target_mileage' : target_mileage}
     return render(request, 'odometr/car.html', context)
+    
+def checkpoints(request, car_id):
+    car = get_object_or_404(Car, pk=car_id)
+    total_mileage = sum([x.mileage for x in car.checkpoint_set.all()]) + car.initial_mileage
+    checkpoints = car.checkpoint_set.all()
+    context = {'checkpoints' : checkpoints, 'total_mileage' : total_mileage, 'car' : car}
+    return render(request, 'odometr/checkpoints.html', context)

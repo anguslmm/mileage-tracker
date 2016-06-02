@@ -1,6 +1,9 @@
-<h1>{{ car.name}}</h1>
+<h1>{{ car.name }}</h1>
 <p>Yearly mileage: {{ car.yearly_mileage }}</p>
 <p>Start Date: {{ car.start_date }}</p>
 <p>End Date: {{ car.end_date }}</p>
 <p>Total mileage: {{ total_mileage }}</p>
 <p>Target mileage: {{ target_mileage }}</p>
+<br/>
+<a href="{% url 'checkpoints' car.id %}">View checkpoints.</a>
+<a href="{% url 'index' %}">Back to the list.</a>
